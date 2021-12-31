@@ -1,6 +1,12 @@
 const express = require('express')
-const Category = require('../models/category.model')
+const categoryController = require('../controllers/category.controller')
 
-const categoryRoutes = express.Router()
+const router = express.Router()
 
-module.exports = categoryRoutes
+router.get(/^\/$/, categoryController.list)
+router.get('/:id', categoryController.get)
+router.post('/', categoryController.create)
+router.put('/:id', categoryController.update)
+router.delete('/:id', categoryController.delete)
+
+module.exports = router
